@@ -42,7 +42,7 @@ func (sparkpostAPIClient *Client) TrackingDomains() (*[]TrackingDomain, error) {
 func (sparkpostAPIClient *Client) SendingDomains() (*[]SendingDomainResult, error) {
 
 	req, err := http.NewRequest("GET", fmt.Sprintf("%s/%s", sparkpostAPIClient.apiURL, "sending-domains"), nil)
-	req.Header.Add("Authorization", sparkpostAPIKey)
+	req.Header.Add("Authorization", sparkpostAPIClient.apiKey)
 	resp, err := sparkpostAPIClient.http.Do(req)
 	if err != nil {
 		return &[]SendingDomainResult{}, err
